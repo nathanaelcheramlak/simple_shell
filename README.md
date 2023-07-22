@@ -1,2 +1,2 @@
 # Simple shell project
-done by Daniel and Nathanael
+Done by **Daniel** and **Nathanael**
