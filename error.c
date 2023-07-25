@@ -12,6 +12,7 @@ int start_w(const char *str, const char *sub, int index)
 {
 	int len = _strlen(sub);
 	int i;
+
 	for (i = 0; i < len; i++)
 	{
 		if (str[i + index] != sub[i])
@@ -25,7 +26,7 @@ int start_w(const char *str, const char *sub, int index)
 /**
  * remove_string - Removes /bin/
  * @str: The string to be edited.
- * 
+ *
  * Return: None
  */
 void remove_string(char *str)
@@ -53,9 +54,9 @@ void remove_string(char *str)
  * error - prints error message.
  * @name: Name of the file.
  * @cmd_name: Command Line.
- * 
+ *
  * Return: None
-*/
+ */
 void error(char *name, char *cmd_name)
 {
 	int i;
