@@ -27,7 +27,7 @@ void remove_string(char *str);
 int start_w(const char *str, const char *sub, int index);
 void exit_builtin(int exit_status);
 
-int error(char *name, char *cmd_name);
+void error(char *name, char *cmd_name);
 
 int builtin(char *cmd);
 int exec(int argc, char **argument, char **av);
