@@ -24,12 +24,8 @@ int path_ls_bin(char *cmd, char **av)
 	}
 	argv[argc] = NULL;
 	status = exec(argc, argv, av);
-	if (status == 1)
-	{
-		return (1);
-	}
 	free(argv);
-	return (0);
+	return (status);
 }
 
 /**
@@ -40,7 +36,7 @@ int path_ls_bin(char *cmd, char **av)
  *
  * Return: 0 on success 1 if exec function returns 1
  */
-int path_ls(char *cmd, int ac __attribute__((unused)), char **av)
+int path_ls(char *cmd, char **av)
 {
 	int argc = 0, status = 0;
 	char **argv2 = NULL, *token = NULL, *cmd2 = NULL;
@@ -64,11 +60,6 @@ int path_ls(char *cmd, int ac __attribute__((unused)), char **av)
 
 	status = exec(argc, argv2, av);
 	free(cmd2);
-
-	if (status == 1)
-	{
-		return (1);
-	}
-
-	return (0);
+	free(argv2);
+	return (status);
 }

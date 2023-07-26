@@ -21,7 +21,6 @@ int exec(int argc, char **argument, char **av)
 		{
 			if (execve(comm, argument, environ) == -1)
 			{
-				free(argument);
 				error(av[0], comm);
 				exit(127);
 			}
@@ -29,12 +28,9 @@ int exec(int argc, char **argument, char **av)
 		else
 		{
 			wait(&status);
-			if (WIFEXITED(status) && WEXITSTATUS(status) == 127)
-			{
-				exit(127);
-			}
-			free(argument);
-			return (1);
+			if (WIFEXITED(status))
+				errno = WEXITSTATUS(status);
+			return (errno);
 		}
 	}
 	return (0);

@@ -26,15 +26,16 @@ int builtin(char *cmd)
  */
 void print_env(void)
 {
+	char **env = environ;
 	int i = 0;
 	int j = 0;
 
-	while (environ[i] != NULL)
+	while (env[i] != NULL)
 	{
 		j = 0;
-		while (environ[i][j] != '\0')
+		while (env[i][j] != '\0')
 		{
-			_putchar(environ[i][j]);
+			_putchar(env[i][j]);
 			j++;
 		}
 		_putchar('\n');

@@ -19,11 +19,7 @@ int main(int ac, char *av[])
 			prompt();
 		if (getline(&cmd, &n, stdin) == -1)
 		{
-			if (cmd)
-				free(cmd);
-			if (isatty(STDIN_FILENO))
-				_putchar('\n');
-			exit(EXIT_SUCCESS);
+			free(cmd), exit(status);
 		}
 		remove_space(cmd);
 		if (_strlen(cmd) == 0)
@@ -33,18 +29,23 @@ int main(int ac, char *av[])
 			continue;
 
 		else if (builtin(cmd) == 0)
-			free(cmd), exit(EXIT_SUCCESS);
+			free(cmd), exit(status);
 		if (ac > 0 && _strncmp(cmd, "/bin/", 5) == 0)
 		{
 			status = path_ls_bin(cmd, av);
-			if (status == 1)
-				continue;
+			if (status > 0)
+			{
+				if (_strncmp(cmd, "/bin/ls", 7) == 0)
+					status = 2;
+				else
+					status = 127;
+			}
 		}
 		else if (ac > 0 && _strncmp(cmd, "/bin/", 5) != 0)
 		{
 			status = path_ls(cmd, ac, av);
-			if (status == 1)
-				continue;
+			if (status > 0)
+				status = 127;
 		}
 	}
 	return (0);

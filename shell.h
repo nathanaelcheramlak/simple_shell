@@ -30,7 +30,7 @@ void error(char *name, char *cmd_name);
 
 int builtin(char *cmd);
 int exec(int argc, char **argument, char **av);
-int path_ls(char *cmd2, int ac, char **av);
+int path_ls(char *cmd2, char **av);
 int path_ls_bin(char *cmd, char **av);
 void print_env(void);
 
