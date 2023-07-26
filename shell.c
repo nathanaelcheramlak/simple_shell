@@ -43,7 +43,7 @@ int main(int ac, char *av[])
 		}
 		else if (ac > 0 && _strncmp(cmd, "/bin/", 5) != 0)
 		{
-			status = path_ls(cmd, ac, av);
+			status = path_ls(cmd, av);
 			if (status > 0)
 				status = 127;
 		}
