@@ -31,7 +31,6 @@ int path_ls_bin(char *cmd, char **av)
 /**
  * path_ls - breaks strings and excute them
  * @cmd: command from the user
- * @ac: argument count
  * @av: argument vector
  *
  * Return: 0 on success 1 if exec function returns 1
